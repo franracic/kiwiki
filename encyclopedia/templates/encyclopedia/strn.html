@@ -1,0 +1,78 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ime}}
+{% endblock %}
+
+{% block body %}
+    <ul>
+        {% for entry in entries %}
+            {% if entry.0 == 7 %}
+                <br>
+            {% elif entry.0 == 1 %}
+                <br>
+                <h1>{{ entry.1 }}</h1>
+
+            {% elif entry.0 == 0 %}
+                {% for word in entry.1 %}
+                    {% if word.1 == "B" %}
+                        {% if word.2 == "I" %}
+                            
+                            {% if word.5 != "" %}
+                                <a href="{{word.5}}" style="font-weight: bold; font-style: italic;">{{ word.0 }}</a>
+                            {% else %}  
+                                <a style="font-weight: bold; font-style: italic;">{{ word.0 }}</a>
+                            {% endif %}
+                        
+                        {% else %}   
+
+                            {% if word.5 != "" %}
+                                <a href="{{word.5}}" style="font-weight: bold;"">{{ word.0 }}</a>
+                            {% else %}  
+                                <a style="font-weight: bold;">{{ word.0 }}</a>
+                            {% endif %}
+
+                        {% endif %}
+
+                    {% else %}
+                        {% if word.2 == "I" %}        
+                            {% if word.5 != "" %}
+                                <a href="{{word.5}}" style="font-style: italic;">{{ word.0 }}</a>
+                            {% else %}  
+                                <a style="font-style: italic;">{{ word.0 }}</a>
+                            {% endif %}
+                        
+                        {% else %}   
+
+                            {% if word.5 != "" %}
+                                <a href="{{word.5}}">{{ word.0 }}</a>
+                            {% else %}  
+                                <a>{{ word.0 }}</a>
+                            {% endif %}
+
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+            {% elif entry.0 == 2 %}
+                <br>
+                <h2>{{ entry.1 }}</h2>
+            {% elif entry.0 == 3 %}
+                <br>
+                <h3>{{ entry.1 }}</h3>
+            {% elif entry.0 == 4 %}
+                <br>
+                <h4>{{ entry.1 }}</h4>
+            {% elif entry.0 == 5 %}
+                <br>
+                <h5>{{ entry.1 }}</h5>
+            {% elif entry.0 == 8 %}
+                <li>{{ entry.1 }}</li>
+            {% else %}
+                <br>
+                <h6>{{ entry.1 }}</h6>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1 style="color: red">Page does not yet exist!</h1>
+    <br>
+    <h2>All Pages</h2>
+
+    <ul>
+        {% for entry in entries %}
+            <li> <a href="{%url 'strn' entry %}">{{ entry }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
