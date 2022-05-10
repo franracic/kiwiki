@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block body %}
-    <input type="text" name="tit" placeholder="Enter the title">
-    <br>
-
-    <input type="text" name="text" placeholder="Enter text in Markdown’s syntax", style="width: 600px;height: 500px;">
-
+    <form  method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
 {% endblock %}
